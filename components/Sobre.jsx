@@ -2,7 +2,7 @@ import React from 'react'
 
 const Sobre = () => {
   return (
-    <section id="sobre" className="py-16 bg-gray-50">
+    <section id="sobre" className="py-8 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-primary mb-8">

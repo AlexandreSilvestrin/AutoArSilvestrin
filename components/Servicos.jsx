@@ -62,7 +62,7 @@ const Servicos = () => {
   };
 
   return (
-    <section id="servicos" className="py-16 bg-white">
+    <section id="servicos" className="py-8 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-primary text-center mb-12">
