@@ -16,14 +16,14 @@ const Contato = () => {
   ]
 
   return (
-    <section id="contato" className="py-8 bg-primary text-white">
+    <section id="contato" className="py-8 bg-primary text-white section-fade-in">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">
+          <h2 className="text-3xl font-bold mb-8 animate-delay-200">
             Contato
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white bg-opacity-10 p-6 rounded-lg">
+            <div className="bg-white bg-opacity-10 p-6 rounded-lg animate-delay-300">
               <div className="flex items-center justify-center mb-4">
                 <div className="text-4xl mr-4">📞</div>
                 <div>
@@ -32,7 +32,7 @@ const Contato = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white bg-opacity-10 p-6 rounded-lg">
+            <div className="bg-white bg-opacity-10 p-6 rounded-lg animate-delay-400">
               <div className="flex items-center justify-center mb-4">
                 <a 
                   href={whatsappLink}
@@ -64,7 +64,7 @@ const Contato = () => {
           </div>
           
           {/* Seção de Horários */}
-          <div className="mt-8 bg-white bg-opacity-10 p-6 rounded-lg">
+          <div className="mt-8 bg-white bg-opacity-10 p-6 rounded-lg animate-delay-500">
             <h3 className="text-xl font-semibold mb-6">Horário de Funcionamento</h3>
             <div className="max-w-md mx-auto">
               {horarios.map((item, index) => (
@@ -78,7 +78,7 @@ const Contato = () => {
             </div>
           </div>
 
-          <div className="mt-8 bg-white bg-opacity-10 p-6 rounded-lg">
+          <div className="mt-8 bg-white bg-opacity-10 p-6 rounded-lg animate-delay-500">
             <h3 className="text-xl font-semibold mb-4">Endereço e Localização</h3>
             <div className="mb-4">
               <a 

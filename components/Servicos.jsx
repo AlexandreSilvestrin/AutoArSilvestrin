@@ -62,10 +62,10 @@ const Servicos = () => {
   };
 
   return (
-    <section id="servicos" className="py-8 bg-white">
+    <section id="servicos" className="py-8 bg-white section-fade-in">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-primary text-center mb-12">
+          <h2 className="text-3xl font-bold text-primary text-center mb-12 animate-delay-200">
             Nossos Serviços
           </h2>
           <div className={getGridClass()}>

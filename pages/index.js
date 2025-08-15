@@ -13,9 +13,9 @@ export default function Home() {
         <title>Auto Ar Silvestrin</title>
         <meta name="description" content="Auto Ar Silvestrin - Oficina especializada em manutenção e reparo de veículos. Serviços de qualidade com profissionais qualificados." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/icons/logo_icon.svg" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/icons/logo_icon.svg" />
-        <link rel="apple-touch-icon" href="/icons/logo_icon.svg" />
+        <link rel="icon" href="/icons/logo_icon.png" type="image/png" />
+        <link rel="shortcut icon" href="/icons/logo_icon.png" />
+        <link rel="apple-touch-icon" href="/icons/logo_icon.png" />
       </Head>
       <main className="min-h-screen">
         <Header />
