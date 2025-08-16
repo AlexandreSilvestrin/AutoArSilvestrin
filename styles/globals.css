@@ -1,14 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-padding-top: 7rem; /* Valor equilibrado para desktop */
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   scroll-behavior: smooth;
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 
 a {
@@ -18,6 +26,24 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 /* Animações de entrada para seções */
@@ -65,6 +91,15 @@ a {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* Classes para animações de seções */
 .section-fade-in {
   opacity: 0;
@@ -98,54 +133,151 @@ section:hover {
 .animate-delay-400 { animation-delay: 400ms; }
 .animate-delay-500 { animation-delay: 500ms; }
 
+/* Cards de serviço com design moderno */
 .service-card {
   animation: slideInFromLeft 0.8s ease-out forwards;
   opacity: 0;
   transition: all 0.6s ease-in-out;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
 }
 
 .service-card:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   z-index: 10;
 }
 
+/* Grid responsivo para serviços */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* For 5 services: 3 on top, 2 centered below */
-.services-grid .service-card:nth-child(4),
-.services-grid .service-card:nth-child(5) {
-  grid-column: 2 / 3;
+/* Botões modernos */
+.btn-primary {
+  @apply bg-secondary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-amber-600 hover:scale-105 shadow-lg hover:shadow-xl;
 }
 
-/* For 6 services: 3-3 layout */
-.services-grid .service-card:nth-child(4) {
-  grid-column: 1 / 2;
+.btn-secondary {
+  @apply bg-transparent border-2 border-secondary text-secondary px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-secondary hover:text-white hover:scale-105;
 }
 
-.services-grid .service-card:nth-child(5) {
-  grid-column: 2 / 3;
+.btn-whatsapp {
+  @apply bg-green-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-green-600 hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2;
 }
 
-.services-grid .service-card:nth-child(6) {
-  grid-column: 3 / 4;
+/* Seções com espaçamento consistente */
+.section-padding {
+  @apply py-20 px-4;
 }
 
-/* For 7+ services: 4-3 layout */
-.services-grid .service-card:nth-child(7) {
-  grid-column: 1 / 2;
+.section-container {
+  @apply max-w-7xl mx-auto;
 }
 
-.services-grid .service-card:nth-child(8) {
-  grid-column: 2 / 3;
+/* Títulos com tipografia moderna */
+.section-title {
+  @apply text-display font-display font-bold text-center text-primary mb-4;
 }
 
-.services-grid .service-card:nth-child(9) {
-  grid-column: 3 / 4;
+.section-subtitle {
+  @apply text-subtitle text-center text-slate-600 mb-16 max-w-3xl mx-auto;
+}
+
+/* Cards com design glassmorphism */
+.glass-card {
+  @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-2xl shadow-xl;
+}
+
+/* Animações de entrada para elementos */
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .section-padding {
+    @apply py-12 px-4; /* Reduzido de py-16 para py-12 no mobile */
+  }
+  
+  .section-title {
+    @apply text-title;
+  }
+  
+  /* Ajuste para mobile considerando header fixo */
+  html {
+    scroll-padding-top: 6rem;
+  }
+  
+  /* Reduzir margens entre seções no mobile */
+  .section-subtitle {
+    @apply mb-12; /* Reduzido de mb-16 para mb-12 no mobile */
+  }
+  
+  /* Reduzir espaçamento interno das seções no mobile */
+  section {
+    margin-bottom: 2rem; /* Reduzir margem entre seções */
+  }
+  
+  /* Ajustar espaçamento dos cards no mobile */
+  .glass-card {
+    @apply p-6; /* Reduzir padding dos cards no mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ajuste para dispositivos muito pequenos */
+  html {
+    scroll-padding-top: 5rem;
+  }
+  
+  .section-padding {
+    @apply py-10 px-4; /* Ainda mais compacto para mobile pequeno */
+  }
+  
+  .section-subtitle {
+    @apply mb-10; /* Reduzir ainda mais no mobile pequeno */
+  }
+  
+  section {
+    margin-bottom: 1.5rem; /* Margem ainda menor entre seções */
+  }
+}
+
+@media (max-width: 360px) {
+  /* Ajuste para dispositivos extremamente pequenos */
+  html {
+    scroll-padding-top: 4rem;
+  }
+  
+  .section-padding {
+    @apply py-8 px-4; /* Muito compacto para mobile muito pequeno */
+  }
+  
+  .section-subtitle {
+    @apply mb-8; /* Mínimo necessário */
+  }
+  
+  section {
+    margin-bottom: 1rem; /* Margem mínima entre seções */
+  }
 } 
