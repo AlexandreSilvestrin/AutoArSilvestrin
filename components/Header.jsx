@@ -36,18 +36,7 @@ const Header = () => {
               height={70}
               className="w-auto h-16 md:h-20 transition-transform duration-300 hover:scale-105"
             />
-            <div className="hidden md:block">
-              <h1 className={`text-lg font-bold transition-colors duration-300 ${
-                isScrolled ? 'text-primary' : 'text-white'
-              }`}>
-                Auto Ar Silvestrin
-              </h1>
-              <p className={`text-sm transition-colors duration-300 ${
-                isScrolled ? 'text-slate-600' : 'text-slate-300'
-              }`}>
-                Especialistas em Veículos
-              </p>
-            </div>
+
           </div>
 
           {/* Desktop Navigation */}

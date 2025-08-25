@@ -97,7 +97,13 @@ const Footer = () => {
               serviços de qualidade com profissionais qualificados.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center hover:bg-secondary transition-colors duration-300">
+              <a 
+                href="https://www.facebook.com/SilvestrinArCondicionado/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center hover:bg-secondary transition-colors duration-300"
+                aria-label="Siga-nos no Facebook"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
             </div>

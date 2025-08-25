@@ -40,10 +40,10 @@ const Contato = () => {
       <div className="section-container">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="section-title text-white">
+          <h2 className="section-title" style={{ color: 'white' }}>
             Entre em Contato
           </h2>
-          <p className="section-subtitle text-slate-200">
+          <p className="section-subtitle" style={{ color: 'white' }}>
             Estamos aqui para ajudar com todas as suas necessidades automotivas
           </p>
         </div>

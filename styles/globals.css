@@ -184,11 +184,11 @@ section:hover {
 
 /* Títulos com tipografia moderna */
 .section-title {
-  @apply text-display font-display font-bold text-center text-primary mb-4;
+  @apply text-display font-display font-bold text-center mb-4;
 }
 
 .section-subtitle {
-  @apply text-subtitle text-center text-slate-600 mb-16 max-w-3xl mx-auto;
+  @apply text-subtitle text-center mb-16 max-w-3xl mx-auto;
 }
 
 /* Cards com design glassmorphism */
