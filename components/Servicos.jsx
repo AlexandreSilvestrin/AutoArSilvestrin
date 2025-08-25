@@ -3,6 +3,23 @@ import Image from 'next/image'
 import { Snowflake, Zap, Wrench, Droplets, Lightbulb, Battery } from 'lucide-react'
 
 const Servicos = () => {
+  const whatsappLink = "https://wa.me/551123352141"
+  
+  const handleWhatsAppClick = (serviceName) => {
+    console.log('WhatsApp button clicked for service:', serviceName) // Debug log
+    const message = `Olá! Gostaria de solicitar um orçamento para o serviço de ${serviceName}.`
+    const encodedMessage = encodeURIComponent(message)
+    const fullWhatsAppLink = `${whatsappLink}?text=${encodedMessage}`
+    
+    console.log('Opening WhatsApp link:', fullWhatsAppLink) // Debug log
+    
+    try {
+      window.open(fullWhatsAppLink, '_blank', 'noopener,noreferrer')
+    } catch (error) {
+      console.error('Erro ao abrir WhatsApp:', error)
+    }
+  }
+
   const services = [
     {
       icon: Snowflake,
@@ -106,7 +123,14 @@ const Servicos = () => {
                 </div>
 
                 {/* CTA Button */}
-                <button className="w-full mt-6 py-3 px-4 bg-slate-100 text-primary rounded-lg font-medium hover:bg-secondary hover:text-white transition-all duration-300 transform hover:scale-105">
+                <button 
+                  onClick={() => {
+                    console.log('Button clicked for service:', service.title)
+                    handleWhatsAppClick(service.title)
+                  }}
+                  className="w-full mt-6 py-3 px-4 bg-slate-100 text-primary rounded-lg font-medium hover:bg-secondary hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                  style={{ cursor: 'pointer', position: 'relative', zIndex: 1 }}
+                >
                   Solicitar Orçamento
                 </button>
               </div>
