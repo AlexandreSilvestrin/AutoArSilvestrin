@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Head>
         <title>Auto Ar Silvestrin</title>
-        <meta name="description" content="Auto Ar Silvestrin - Oficina especializada em manutenção e reparo de veículos. Serviços de qualidade com profissionais qualificados." />
+        <meta name="description" content="Especialistas em ar-condicionado, autoelétrica e radiadores com mais de 30 anos de experiência no mercado" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/icons/logo_icon.png" type="image/png" />
         <link rel="shortcut icon" href="/icons/logo_icon.png" />
