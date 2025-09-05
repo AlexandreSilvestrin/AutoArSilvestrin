@@ -83,7 +83,7 @@ const Sobre = () => {
             <div className="relative hidden lg:block">
               <div className="relative z-10">
                 <Image
-                  src="/images/ar_condicionado.jpg"
+                  src="/images/oficina.jpeg"
                   alt="Oficina Auto Ar Silvestrin"
                   width={600}
                   height={400}
