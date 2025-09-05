@@ -15,7 +15,8 @@ const WhatsAppFloat = () => {
   const handleWhatsAppClick = () => {
     console.log('WhatsApp clicked!') // Debug log
     try {
-      const whatsappLink = "https://wa.me/551123352141"
+      const message = encodeURIComponent("Olá! Gostaria de solicitar um serviço.")
+      const whatsappLink = `https://wa.me/551123352141?text=${message}`
       console.log('Opening:', whatsappLink) // Debug log
       window.open(whatsappLink, '_blank', 'noopener,noreferrer')
     } catch (error) {

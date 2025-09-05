@@ -1,9 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Award, Shield, Car } from 'lucide-react'
+import { Award, Shield, Car, ChevronLeft, ChevronRight } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
 const Sobre = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const images = [
+    '/images/oficina.jpeg',
+    '/images/oficina2.jpeg'
+  ]
+
+  // Auto-rotate images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      )
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [currentImageIndex]) // Reset timer when image changes
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    )
+  }
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    )
+  }
+
+  const goToImage = (index) => {
+    setCurrentImageIndex(index)
+  }
+
   const features = [
     {
       icon: Award,
@@ -48,10 +81,10 @@ const Sobre = () => {
         </ScrollReveal>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Text Content */}
+        <div className="grid lg:grid-cols-2 gap-4 items-center mb-10">
+          {/* Text Content - Hidden on mobile */}
           <ScrollReveal x={-50} delay={0.2} duration={0.8}>
-            <div className="space-y-6">
+            <div className="space-y-6 hidden lg:block">
               <h2 className="text-title font-display font-bold text-primary mb-6">
                 Nossa História
               </h2>
@@ -78,17 +111,64 @@ const Sobre = () => {
             </div>
           </ScrollReveal>
 
-          {/* Image - Oculto no mobile */}
+          {/* Image Carousel - Visible on all devices */}
           <ScrollReveal x={50} delay={0.4} duration={0.8}>
-            <div className="relative hidden lg:block">
-              <div className="relative z-10">
-                <Image
-                  src="/images/oficina.jpeg"
-                  alt="Oficina Auto Ar Silvestrin"
-                  width={600}
-                  height={400}
-                  className="rounded-2xl shadow-2xl"
-                />
+            <div className="relative w-full max-w-[600px] mx-auto lg:mx-0 h-[200px] lg:h-[280px]">
+              <div className="relative z-10 group w-full h-full">
+                {/* Image Container with fixed dimensions */}
+                <div className="relative w-full h-full rounded-2xl shadow-2xl overflow-hidden">
+                  {images.map((image, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-all duration-700 ease-in-out rounded-2xl overflow-hidden ${
+                        index === currentImageIndex
+                          ? 'opacity-100 scale-100'
+                          : 'opacity-0 scale-105'
+                      }`}
+                    >
+                      <Image
+                        src={image}
+                        alt="Oficina Auto Ar Silvestrin"
+                        fill
+                        className="object-cover"
+                        priority={index === 0}
+                      />
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Navigation Buttons */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-20"
+                  aria-label="Imagem anterior"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-20"
+                  aria-label="Próxima imagem"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+                
+                {/* Dots Indicator */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToImage(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentImageIndex 
+                          ? 'bg-white scale-125' 
+                          : 'bg-white/50 hover:bg-white/75'
+                      }`}
+                      aria-label={`Ir para imagem ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
               {/* Decorative Elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-full blur-xl"></div>
